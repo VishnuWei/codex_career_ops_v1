@@ -1,0 +1,53 @@
+{
+  "name": "codex-career-ops-v1",
+  "version": "1.0.0",
+  "description": "AI-powered job search pipeline for Codex Terminal",
+  "scripts": {
+    "doctor": "node doctor.mjs",
+    "verify": "node verify-pipeline.mjs",
+    "normalize": "node normalize-statuses.mjs",
+    "dedup": "node dedup-tracker.mjs",
+    "merge": "node merge-tracker.mjs",
+    "pdf": "node generate-pdf.mjs",
+    "sync-check": "node cv-sync-check.mjs",
+    "update:check": "node update-system.mjs check",
+    "update": "node update-system.mjs apply",
+    "rollback": "node update-system.mjs rollback",
+    "liveness": "node check-liveness.mjs",
+    "scan": "node scan.mjs",
+    "scan:recent": "node scan.mjs --max-age-days 30 --include-unknown-age",
+    "scan:flutter": "node scan.mjs --mode flutter --max-age-days 30 --include-unknown-age",
+    "scan:android": "node scan.mjs --mode android --max-age-days 30 --include-unknown-age",
+    "scan:ios": "node scan.mjs --mode ios --max-age-days 30 --include-unknown-age",
+    "scan:mobile": "node scan.mjs --mode mobile --max-age-days 30 --include-unknown-age",
+    "friend:setup": "node friend-setup.mjs",
+    "friend:scan": "node scan.mjs --mode flutter --max-age-days 30 --include-unknown-age",
+    "friend:pipeline": "node friend-pipeline.mjs",
+    "friend:evaluate": "node friend-evaluate.mjs --limit 5",
+    "friend:freelance": "node friend-pipeline.mjs --type freelance",
+    "friend:gigs": "node friend-pipeline.mjs --type gig",
+    "friend:deep": "node friend-deep.mjs",
+    "friend:digest": "node friend-digest.mjs",
+    "friend:email-test": "node friend-email-test.mjs",
+    "friend:apply-queue": "node friend-pipeline.mjs",
+    "friend:all": "node friend-all.mjs"
+  },
+  "keywords": [
+    "ai",
+    "job-search",
+    "codex-terminal",
+    "career",
+    "automation"
+  ],
+  "author": "Santiago Fernández de Valderrama <hi@santifer.io> (https://santifer.io)",
+  "homepage": "https://santifer.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santifer/career-ops"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.1",
+    "playwright": "^1.58.1"
+  }
+}
