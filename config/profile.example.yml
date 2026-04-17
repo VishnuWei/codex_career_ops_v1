@@ -1,71 +1,130 @@
-# Career-Ops Profile Configuration
-# Copy this file to config/profile.yml and fill in your details.
-# This is the single source of truth for your personal data across all modes.
-
 candidate:
-  full_name: "Jane Smith"
-  email: "jane@example.com"
-  phone: "+1-555-0123"
-  location: "San Francisco, CA"
-  linkedin: "linkedin.com/in/janesmith"
-  portfolio_url: "https://janesmith.dev"
-  github: "github.com/janesmith"
-  twitter: "https://x.com/janesmith"
-  # (Optional) Canva resume design ID for visual CV generation via /career-ops pdf.
-  # Find it in your Canva design URL: https://www.canva.com/design/DAxxxxxxx/...
-  # The ID starts with "D" and is 11 characters long.
-  # canva_resume_design_id: "DAxxxxxxxxx"
+  full_name: "Vishnu Variyamkandy"
+  email: "vishnu29variyamkandy@gmail.com"
+  phone: "+91-9188537080"
+  location: "Kozhikode, Kerala, India"
+  linkedin: "linkedin.com/in/vishnu-v-9a2951217"
+  portfolio_url: ""   # add if you have one later
+  github: "github.com/VishnuWei"
 
 target_roles:
-  # Your North Star roles — what you're optimizing for
   primary:
-    - "Senior AI Engineer"
-    - "Staff ML Engineer"
-  # Archetypes help the evaluation system score fit
+    - "Senior Flutter Developer"
+    - "Mobile App Developer"
+    - "Freelance Flutter Developer"
+    - "Contract Mobile Engineer"
+
   archetypes:
-    - name: "AI/ML Engineer"
-      level: "Senior/Staff"
-      fit: "primary"        # primary = dream role, secondary = good fit, adjacent = stretch
-    - name: "AI Product Manager"
-      level: "Senior"
-      fit: "secondary"
-    - name: "Solutions Architect"
+    - name: "Mobile Engineer (Flutter)"
       level: "Mid-Senior"
-      fit: "adjacent"
+      fit: "primary"
+    - name: "Cross-platform App Developer"
+      level: "Mid-Senior"
+      fit: "primary"
+    - name: "Android Developer"
+      level: "Mid-Senior"
+      fit: "secondary"
+    - name: "Freelance Flutter Developer"
+      level: "Mid-Senior"
+      fit: "primary"
+    - name: "Contract Mobile Engineer"
+      level: "Mid-Senior"
+      fit: "primary"
+    - name: "Mobile App Consultant"
+      level: "Mid-Senior"
+      fit: "secondary"
 
 narrative:
-  # Your professional headline (1 line)
-  headline: "ML Engineer turned AI product builder"
-  # Your exit story — what makes you unique
-  exit_story: "Built and sold my SaaS after 5 years. Now focused on applied AI at scale."
-  # Your top 3-5 superpowers
+  headline: "Senior Flutter Developer building scalable cross-platform apps"
+
+  exit_story: "Built and shipped 10+ production mobile apps across social, wellness, travel, and enterprise domains, focusing on performance, real-time systems, and clean architecture."
+
   superpowers:
-    - "End-to-end ML pipelines"
-    - "Fast prototyping (idea to prod in 2 weeks)"
-    - "Cross-functional communication"
-  # Proof points — projects, articles, case studies with measurable impact
+    - "Real-time chat systems with WebSocket (10K+ users)"
+    - "Performance optimization (startup time ↓35%, crash rate ↓40%)"
+    - "Payment integrations (Razorpay, Google Play Billing, App Store IAP)"
+    - "Clean Architecture + scalable Flutter apps"
+
   proof_points:
-    - name: "Project Alpha"
-      url: "https://janesmith.dev/project-alpha"
-      hero_metric: "Reduced inference latency 40%"
-    - name: "Open Source Tool"
-      url: "https://github.com/janesmith/tool"
-      hero_metric: "2K+ GitHub stars"
-  # Optional: dashboard/demo URL with credentials
-  # dashboard:
-  #   url: "https://janesmith.dev/demo"
-  #   password: "demo-2026"
+    - name: "Real-time Chat System"
+      url: "https://github.com/VishnuWei"
+      hero_metric: "Handled 10,000+ concurrent users with live presence and messaging"
+
+    - name: "Production Apps Portfolio"
+      url: "https://github.com/VishnuWei"
+      hero_metric: "Built 10+ apps across multiple domains with 25% retention improvement"
+
+    - name: "Performance Optimization"
+      url: ""
+      hero_metric: "Reduced app startup time by 35% and crash rate by 40%"
 
 compensation:
-  target_range: "$150K-200K"     # Your target total comp
-  currency: "USD"
-  minimum: "$120K"               # Walk-away number
-  location_flexibility: "Remote preferred, 1 week/month on-site possible"
+  target_range: "₹10L - ₹20L"
+  currency: "INR"
+  minimum: "₹8L"
+  location_flexibility: "Remote preferred"
 
 location:
-  country: "United States"
-  city: "San Francisco"
-  timezone: "PST"
-  visa_status: "No sponsorship needed"
-  # For remote roles outside your country:
-  # onsite_availability: "1 week/month in any city"
+  country: "India"
+  city: "Kozhikode"
+  timezone: "IST"
+  visa_status: "Not applicable"
+  onsite_availability: "Open to remote or hybrid"
+
+deal_breakers:
+  hard:
+    - "On-site outside India with no remote option"
+    - "No mobile development in the role (pure backend, data, ML, or infra)"
+    - "Role requires 0-2 years experience (underleveled)"
+    - "Stack is >60% non-mobile (Java Spring, .NET, Python data science, etc.)"
+  soft:
+    - "React Native only (no Flutter) — evaluate transferability"
+    - "No salary information posted"
+    - "On-site hybrid outside India — score penalty unless relocation included"
+    - "Role requires 10+ years (overleveled)"
+    - "Freelance gigs with vague scope or no clear budget"
+    - "Clients asking for unpaid trial work or full builds before contract"
+
+scoring_notes:
+  boost:
+    - "Flutter mentioned in JD → +0.4"
+    - "Real-time or WebSocket requirements → +0.3"
+    - "Payments / fintech / IAP scope → +0.3"
+    - "Performance optimization focus → +0.2"
+    - "BLoC or Clean Architecture → +0.2"
+    - "Remote-friendly or fully remote → +0.2"
+  penalize:
+    - "React Native only (no Flutter) → -0.3"
+    - "Pure native Android/iOS → -0.4"
+    - "No mobile context at all → hard reject (≤2.0)"
+    - "On-site outside India → -1.0"
+    - "Freshers or 0-1yr listings → -0.5"
+
+ats_keywords:
+  primary: ["Flutter", "Dart", "cross-platform", "BLoC", "Clean Architecture", "Android", "iOS"]
+  secondary: ["WebSocket", "real-time", "Razorpay", "IAP", "in-app purchases", "Google Play Billing", "Firebase", "Firestore"]
+  performance: ["startup time", "crash rate", "Flutter DevTools", "performance optimization", "memory management"]
+  delivery: ["Codemagic", "GitHub Actions", "CI/CD", "TestFlight", "Play Console", "app store release"]
+
+freelance_preferences:
+  preferred_modes:
+    - "freelance"
+    - "contract"
+    - "consulting"
+    - "retainer"
+  evaluation_priority:
+    - "scope clarity"
+    - "budget quality"
+    - "client credibility"
+    - "async fit"
+    - "repeat-business potential"
+  proposal_style:
+    - "Mirror the scope clearly"
+    - "Lead with a relevant shipped app or production proof point"
+    - "Suggest milestones or phased delivery"
+    - "Reduce client risk with clear communication and assumptions"
+  reject_if:
+    - "Unpaid trial work"
+    - "Impossible scope for the posted budget"
+    - "No mobile relevance"
+    - "Anonymous or suspicious client"

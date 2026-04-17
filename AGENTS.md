@@ -8,4 +8,5 @@ Key points:
 - Never submit an application on the user's behalf.
 
 For Codex-specific setup, see `docs/CODEX.md`.
+For the Codex command-center routing map, see `docs/CODEX_COMMAND_CENTER.md`.
 For the Codex-native deep-dive plan, see `docs/CODEX_DEEP_ARCHITECTURE.md`.

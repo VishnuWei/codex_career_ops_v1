@@ -23,10 +23,11 @@ When operating in this repository, follow guidance in this order:
 
 1. `AGENTS.md`
 2. `CODEX.md`
-3. `DATA_CONTRACT.md`
-4. `docs/CODEX.md`
-5. `docs/CODEX_DEEP_ARCHITECTURE.md`
-6. `CLAUDE.md` for inherited shared Career-Ops rules that have not yet been rewritten here
+3. `docs/CODEX_COMMAND_CENTER.md`
+4. `DATA_CONTRACT.md`
+5. `docs/CODEX.md`
+6. `docs/CODEX_DEEP_ARCHITECTURE.md`
+7. `CLAUDE.md` for inherited shared Career-Ops rules that have not yet been rewritten here
 
 ## Rules
 
@@ -43,5 +44,14 @@ This fork is intended to evolve these areas first:
 - Codex-native routing and setup
 - Codex-native deep-dive research flow
 - Codex-friendly documentation and onboarding
+- Codex parity with the Career-Ops command-center experience
+
+## Product Goal
+
+This repository should behave like `career-ops`, but with Codex as the primary agent runtime.
+
+- Keep the same modes, reports, tracker flow, and CV generation behavior
+- Route Codex into the checked-in `modes/*` files instead of inventing a second workflow
+- Treat `friend-*` scripts as optional helpers, not as the core product surface
 
 Legacy Claude-specific files may still exist for compatibility during migration, but Codex should prefer the docs listed above whenever both versions are available.

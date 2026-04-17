@@ -1,6 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import yaml from 'js-yaml';
+import { detectGeoRestriction, inferRoleFit, loadTargetingProfile } from './lib/targeting.mjs';
 
 export function readText(path, fallback = '') {
   return existsSync(path) ? readFileSync(path, 'utf-8') : fallback;
@@ -177,11 +178,12 @@ export function extractEmail() {
 }
 
 export function extractTargetKeywords() {
-  const profile = loadYaml('config/profile.yml') || {};
+  const { profile, targeting } = loadTargetingProfile();
   const { target_roles: targetRoles, narrative, location } = profile;
   const parts = [
     ...(!profileLooksPlaceholder() ? (targetRoles?.primary || []) : []),
     ...(!profileLooksPlaceholder() ? ((targetRoles?.archetypes || []).map(x => x.name)) : []),
+    ...(targeting.includePhrases || []),
     ...(narrative?.superpowers || []),
     location?.country,
     location?.city,
@@ -221,6 +223,7 @@ export function daysAgo(value) {
 export function scoreOpportunity(entry, profileBundle = loadProfile()) {
   const cvSignals = extractCvSignals();
   const keywords = extractTargetKeywords();
+  const { targeting } = loadTargetingProfile();
   const title = `${entry.title} ${entry.company} ${entry.location || ''}`.toLowerCase();
   let keywordHits = 0;
   for (const keyword of keywords) {
@@ -245,6 +248,9 @@ export function scoreOpportunity(entry, profileBundle = loadProfile()) {
     ['data analyst', -0.9],
     ['marketing', -1.5],
     ['research engineer', -0.6],
+    ['ai', -1.0],
+    ['ml', -0.8],
+    ['agent', -1.0],
   ];
 
   let cvRoleScore = 0;
@@ -273,15 +279,29 @@ export function scoreOpportunity(entry, profileBundle = loadProfile()) {
   const typePenalty = classifyOpportunity(entry.title) === 'job' ? 0 : 0.3;
   const postedDays = daysAgo(entry.postedAt || entry.firstSeen);
   const ageBonus = postedDays == null ? 0 : postedDays <= 7 ? 1.2 : postedDays <= 30 ? 0.8 : postedDays <= 60 ? 0.2 : -0.8;
+  const geoPenalty = detectGeoRestriction({
+    title: entry.title,
+    location: entry.location,
+    bodyText: `${entry.notes || ''} ${entry.company || ''}`,
+    targeting,
+  }) ? 2.4 : 0;
+  const fit = inferRoleFit({
+    title: entry.title,
+    location: entry.location,
+    bodyText: entry.notes || '',
+    targeting,
+  });
 
-  const raw = keywordHits * 0.35 + cvRoleScore + remoteBonus + locationBonus + ageBonus - typePenalty;
+  const raw = keywordHits * 0.35 + cvRoleScore + remoteBonus + locationBonus + ageBonus - typePenalty - geoPenalty + (fit.accepted ? 0.6 : -1.4);
   const score = Math.max(1, Math.min(5, 2.2 + raw / 1.8));
 
   return {
     score: Number(score.toFixed(1)),
     postedDays,
     ageLabel: postedDays == null ? 'unknown' : postedDays <= 30 ? `${postedDays}d` : `${postedDays}d (stale)`,
-    reason: cvRoleScore >= 1.5
+    reason: geoPenalty > 0
+      ? 'geo-blocked'
+      : cvRoleScore >= 1.5
       ? 'strong-role-match'
       : cvRoleScore <= -1
         ? 'weak-role-match'

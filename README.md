@@ -107,6 +107,7 @@ codex   # Open Codex Terminal in this directory
 > **The system is designed to be customized by the agent itself.** Modes, archetypes, scoring weights, negotiation scripts -- just ask Codex to change them. It reads the same files it uses, so it knows exactly what to edit.
 
 See [docs/SETUP.md](docs/SETUP.md) for the full setup guide.
+For Codex-specific installation and startup, see [README_CODEX.md](README_CODEX.md).
 
 If you want the shortest install-and-run guide for non-technical friends, use [README_FRIENDS.md](README_FRIENDS.md).
 

@@ -7,6 +7,9 @@ and the root `CODEX.md` are enough for routing and behavior. Codex should
 reuse the same checked-in mode files, templates, tracker flow, and scripts
 that power Career-Ops, while using Codex Terminal as the primary runtime.
 
+For the direct mode map and command-center behavior, also read
+`docs/CODEX_COMMAND_CENTER.md`.
+
 ## Prerequisites
 
 - A Codex client that can work with project `AGENTS.md`
@@ -45,7 +48,7 @@ npx playwright install chromium
 
 The key point: Codex support is additive. It should route into the existing
 Career-Ops modes and scripts rather than introducing a parallel automation
-layer.
+layer or a separate product.
 
 For the planned rewrite of deep company research into a Codex-native workflow,
 see `docs/CODEX_DEEP_ARCHITECTURE.md`.

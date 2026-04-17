@@ -141,6 +141,14 @@ npm run scan:ios
 npm run scan:mobile
 ```
 
+For the broadest internet-backed pass, use:
+
+```powershell
+npm run friend:scan:web
+```
+
+This runs the strict 30-day filter and also uses the configured web search queries before keeping only live links.
+
 ### 3. Build an apply queue
 
 ```powershell
